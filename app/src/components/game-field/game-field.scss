@@ -1,0 +1,321 @@
+.game-field {
+  position: relative;
+  padding: 5px;
+  min-width: 1000px;
+  min-height: 600px;
+  filter: drop-shadow(2px 4px 6px black);
+}
+
+.player-1,
+.player-2,
+.player-3,
+.player-4 {
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 30%; */
+  width: 30%;
+  flex-direction: column;
+  border-radius: 10px;
+  position: fixed;
+}
+
+.player-1 {
+  bottom: 2%;
+  left: 44%;
+}
+
+.player-2 {
+  top: 23%;
+  left: 0%;
+  transform: rotate(-90deg);
+}
+
+.player-3 {
+  top: 2%;
+  left: 44%;
+}
+
+.player-4 {
+  top: 50%;
+  right: 2%;
+  transform: rotate(90deg);
+}
+
+.player-name {
+  font-size: 1em;
+  color: white;
+  position: absolute;
+  bottom: -15%;
+  right: 30%;
+  opacity: 0;
+  transition: all 1s ease-in-out;
+}
+
+.player-name.show {
+  opacity: 1;
+}
+
+.cards {
+  height: 115px;
+  /* TODO: maybe remove next 3 lines after switch on normal cards */
+  display: flex;
+  gap: 3px;
+  transition: 1s all;
+  z-index: 1;
+  opacity: 0;
+}
+
+.field {
+  width: 40%;
+  height: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.deck,
+.current-card {
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  border-radius: 5px;
+  width: 30%;
+  height: 83%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.simple-card .back-side {
+  position: absolute;
+}
+
+.player-1 .simple-card .back-side,
+.current-card .simple-card .back-side {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.deck {
+  position: relative;
+  cursor: pointer;
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.full-deck {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  top: 10%;
+  left: -10%;
+}
+
+.full-deck .card {
+  position: absolute;
+}
+
+.rhomb,
+.uno {
+  position: absolute;
+  right: 8%;
+}
+
+.rhomb {
+  top: 15%;
+  max-width: 7%;
+  fill: rgba(255, 255, 0, 0.5);
+}
+
+.uno {
+  width: 8%;
+  bottom: 15%;
+  cursor: pointer;
+}
+
+.uno:hover {
+  transform: scale(0.9);
+  /*cursor: url('../../assets/img/pointer.webp'), pointer;*/
+}
+
+/*active player's card*/
+.simple-card {
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+.player-1 .simple-card {
+  cursor: pointer;
+}
+
+.player-2 .simple-card,
+.player-3 .simple-card,
+.player-4 .simple-card {
+  pointer-events: none;
+}
+
+.player-1 .simple-card svg:hover {
+  transform: rotate(-15deg) translateY(-1.5em);
+}
+
+.clue {
+  //transform: rotate(-10deg) translateY(-1em);
+  animation: shake 3s;
+  animation-iteration-count: infinite;
+}
+
+.simple-card:not(:first-child) {
+  margin-left: -5%;
+}
+
+.player-1 .simple-card:hover {
+  transform: rotate(-5deg) translateY(-1.5em);
+  transition: 0.3s ease-in-out;
+  z-index: 999;
+  /*cursor: url('../../assets/img/pointer.webp'), pointer;*/
+}
+
+.player-1 .current-card .simple-card:hover {
+  transform: none;
+  transition: none;
+}
+
+.player-1 .simple-card svg:hover {
+  transform: translateY(-0.5em);
+}
+
+.full-deck .card:hover:last-child {
+  transform: translateY(0.8em);
+  transition: 0.3s ease-in-out;
+}
+
+.card {
+  transition: all 0.3s ease-in-out;
+}
+
+.full-deck .card.move:last-child {
+  animation-duration: 2s, 1s;
+  animation-name: move, flip;
+  animation-iteration-count: 1, 1;
+  animation-fill-mode: forwards, forwards;
+  animation-delay: 0s, 2s;
+}
+
+@keyframes move {
+  from {
+    transform: translate(0%, 0%);
+  }
+
+  to {
+    transform: translate(200%, 100%);
+  }
+}
+
+@keyframes flip {
+  from {
+    top: 100%;
+    left: 200%;
+    transform: rotateY(0deg);
+  }
+
+  to {
+    top: 100%;
+    left: 200%;
+    transform: rotateY(180deg);
+  }
+}
+
+.cards-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 5%;
+  z-index: 2;
+}
+
+.card-distribution {
+  position: absolute;
+  top: 10%;
+  transition: all 1.5s ease-in-out;
+  left: -5%;
+}
+
+.card-distribution.hide-card {
+  transform: scale(0);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.cards.show {
+  opacity: 1;
+}
+
+//---------------one card front + back
+.get-card {
+  display: flex;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+  right: -18px;
+}
+
+.get-card:hover {
+  transform: translateY(0.8em);
+  transition: 0.3s ease-in-out;
+  /*cursor: url('../../assets/img/pointer.webp'), pointer;*/
+}
+
+.back,
+.front {
+  /*position: absolute;*/
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.back {
+  z-index: 1;
+}
+
+.front {
+  transform: rotateY(-180deg);
+}
+
+.get-card.move {
+  animation-duration: 2s;
+  animation-name: move;
+  animation-fill-mode: none;
+  /*transform: translate(100%, 100%) rotateY(-180deg);*/
+}
+
+@keyframes move {
+  from {
+    transform: translate(0%, 0%) rotateY(0deg);
+  }
+
+  to {
+    transform: translate(100%, 90%) rotateY(-180deg);
+  }
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}

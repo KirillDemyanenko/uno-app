@@ -1,0 +1,225 @@
+@import url(../src/components/main-page/main-page.scss);
+@import url(../src/components/developed-by/developed-by.scss);
+@import url(../src/components/developed-by/developed-by.scss);
+@import url(../src/components/choice-settings/choice.scss);
+@import url(../src/components/game-field/game-field.scss);
+@import url(../src/components/cards/cards.scss);
+@import url(../src/components/rules-page/rules-page.scss);
+@import url(../src/components/table-results/table-results.scss);
+@import url(../src/scss/_normalize.scss);
+@import url(../src/scss/buttons.scss);
+@import url(../src/scss/inputs.scss);
+@import url(../src/components/header/header.scss);
+@import url(../src/components/registration/registration.scss);
+@import url(../src/components/chat/chat.scss);
+@import url(../src/components/animated-items/animated-items.scss);
+@import url(../src/components/exit-window/exit-window.scss);
+@import url(../src/components/error-page/error-page.scss);
+@import url(../src/components/winner-message/winner-message.scss);
+
+body{
+  user-select: none;
+  /*cursor: url('./assets/img/cursor.png'), auto!important;*/
+  button {
+    /*cursor: url('./assets/img/pointer.png'), pointer!important;*/
+  }
+
+  img {
+    &.two,
+    &.three,
+    &.four {
+      /*cursor: url('./assets/img/pointer.png'), pointer!important;*/
+    }
+  }
+
+  div.loader,
+  .finding-game {
+    display: flex;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background: #41144e;
+    background: -webkit-linear-gradient(to right, #c27e25, #41144e);
+    background: linear-gradient(to right, #c27e25, #41144e);
+    background-attachment: fixed;
+    & > div {
+      width: 3vw;
+      height: 3vw;
+      border-radius: 100%;
+      margin: 2vw;
+      background-image: linear-gradient(145deg, rgba(255,255,255,0.5) 0%, rgba(0,0,0,0) 100%);
+      animation: bounce 1.5s 0.5s linear infinite;
+    }
+  }
+
+  .yellow-circle {
+    background-color: #FFC300;
+  }
+
+  .red-circle {
+    background-color: #c01e1e;
+    animation-delay: 0.1s;
+  }
+
+  .blue-circle {
+    background-color: darkblue;
+    animation-delay: 0.2s;
+  }
+
+  .green-circle {
+    background-color: #258f37;
+    animation-delay: 0.3s;
+  }
+}
+
+
+
+@keyframes bounce {
+  0%, 50%, 100% {
+    transform: scale(1);
+    filter: blur(0px);
+  }
+  25% {
+    transform: scale(0.6);
+    filter: blur(3px);
+  }
+  75% {
+    filter: blur(3px);
+    transform: scale(1.4);
+  }
+}
+
+.current-player-move {
+  animation: 6s anim-popoutin ease infinite;
+}
+
+.modalView {
+  position: absolute;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 50%;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  opacity: .6;
+  font-size: 1.2rem;
+  -webkit-box-shadow: -1px 2px 30px -8px rgb(0 0 0 / 62%);
+  -moz-box-shadow: -1px 2px 30px -8px rgba(0, 0, 0, 0.62);
+  box-shadow: -1px 2px 30px -8px rgb(0 0 0 / 62%);
+}
+
+.reg-window .modalView {
+  padding: 10px 10px;
+  top: -30%;
+  width: 80%;
+  background: rgb(255, 168, 168);
+  opacity: 1;
+}
+
+.game-field .modalView {
+  padding: 10px 90px;
+  font-size: 1rem;
+  top: 70%;
+  background: bottom;
+}
+
+.modalView > .modalView__content {
+  color: white;
+  font-weight: bold;
+}
+.modalView > .modalView__content.centered {
+  text-align: center;
+}
+
+.modalView__content h1 {
+  font-size: 1.5rem;
+  padding-bottom: 10px;
+}
+.modalView__content p {
+  font-size: 1rem;
+}
+
+#modalView__closeBtn {
+  position: absolute;
+  background: #000000;
+  width: 35px;
+  border-radius: 35px;
+  height: 35px;
+  right: -17px;
+  top: -17px;
+  color: white;
+}
+
+#modalView__closeBtn {
+  cursor: pointer;
+}
+#modalView__closeBtn:after,
+#modalView__closeBtn:before {
+  content: "";
+  height: 20px;
+  width: 20px;
+  border-top: 3px solid #ffffff;
+  position: absolute;
+  top: 13px;
+  right: 0;
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+#modalView__closeBtn:before {
+  color: white;
+  right: 14px;
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+#modalView__closeBtn:hover {
+  background-color: green;
+}
+
+
+@keyframes anim-popoutin {
+  0% {
+    color: #ffffff;
+    transform: scale(0);
+    opacity: 0;
+    text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+  25% {
+    color: #d5cb13;
+    transform: scale(1);
+    opacity: 1;
+    text-shadow: 3px 10px 5px rgba(0, 0, 0, 0.5);
+  }
+  50% {
+    color: black;
+    transform: scale(1);
+    opacity: 1;
+    text-shadow: 1px 0 0 rgba(0, 0, 0, 0);
+  }
+  100% {
+    /* animate nothing to add pause at the end of animation */
+    transform: scale(1);
+    opacity: 1;
+    text-shadow: 1px 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+@keyframes anim-fromtop {
+  0% { opacity: 0; transform: translateY(-100%);}
+  25% { opacity: 1; transform: translateY(0%);}
+  50% {
+  }
+  100% {
+  }
+}
+.finding-game {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+}

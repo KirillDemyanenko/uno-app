@@ -1,0 +1,139 @@
+.button {
+  position: relative;
+  background: #ff4742;
+  border: 1px solid #ff4742;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito, roboto, proxima-nova, "proxima nova", sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 12px;
+  outline: 0;
+  padding: 10px 12px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: uppercase;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  filter: drop-shadow(2px 4px 6px black);
+  z-index: 2;
+}
+
+.button:hover,
+.button:active,
+.off {
+  background-color: initial;
+  background-position: 0 0;
+  color: #ff4742;
+}
+
+.button:active {
+  opacity: 0.5;
+}
+
+.btn-computer,
+.btn-multiplayer {
+  padding: 25px 30px;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.btn-rules {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.btn-cross {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+}
+
+.modalView .btn-cross {
+  font-size: 10px;
+  padding: 10px;
+}
+
+.btn-developed,
+.btn-share {
+  font-size: 8px;
+  padding: 5px;
+}
+
+.btn-developed {
+  margin-right: 10px;
+}
+
+.btn-start {
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+  opacity: .3;
+  pointer-events: none;
+}
+
+.btn-start.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.btn-read,
+.btn-flip {
+  align-self: flex-end;
+  padding: 5px;
+  text-transform: none;
+  font-size: 15px;
+}
+
+.btn-read {
+  position: absolute;
+  bottom: 2%;
+  right: 3%;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.btn-flip {
+  position: relative;
+  right: 3%;
+}
+
+.btn-log {
+  margin-right: 15px;
+}
+
+.btn-submit-reg,
+.btn-submit-log {
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  opacity: .3;
+  pointer-events: none;
+}
+
+.btn-submit-reg.show,
+.btn-submit-log.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.btn-yes {
+  margin-right: 10px;
+}
+
+.btn-small-rules {
+  padding: 5px;
+  font-size: 16px;
+  position: absolute;
+  right: 25px;
+  bottom: 69%
+}
+
+
